@@ -4,7 +4,6 @@ class Solution:
         pair.sort(reverse=True)
         stack = []
         for p, s in pair:
-            stack.append((target - p) / s)
-            if len(stack) >= 2 and stack[-1] <= stack[-2]:
-                stack.pop()
+            if not stack or (target - p) / s > stack[-1]: 
+                stack.append((target - p) / s)
         return len(stack)
