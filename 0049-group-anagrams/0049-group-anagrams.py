@@ -1,16 +1,12 @@
-class Solution(object):
-    def groupAnagrams(self, strs):
-        """
-        :type strs: List[str]
-        :rtype: List[List[str]]
-        """
-        dict = {}
-        for i in range(len(strs)):
-            split =tuple(sorted(str(strs[i])))
-            # print(split)
-            if split in dict.keys():
-                dict[split].append(str(strs[i]))
-            else:
-                dict[split]=[str(strs[i])]
-        return(dict.values())
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        if len(strs)==0:
+            return [[""]]
+        
+        cnt = defaultdict(list)
+        
+        for word in strs:
+            key = ''.join(sorted(word))
+            cnt[key].append(word)
+        return list(cnt.values())
         
